@@ -1,0 +1,49 @@
+def water_jug_solution():
+    jug1_capacity = 4
+    jug2_capacity = 3
+    target_amount = 2
+
+    jug1 = 0
+    jug2 = 0
+
+    print(f"{'4lit':<6}{'3lit':<6}")
+
+    def print_state():
+        print(f"({jug1:<2},{jug2:<2})")
+
+    print_state()
+
+    # Fill 3lit jug
+    jug2 = jug2_capacity
+    print_state()
+
+    # Pour water from 3lit to 4lit jug
+    pour_amount = min(jug1_capacity - jug1, jug2)
+    jug1 += pour_amount
+    jug2 -= pour_amount
+    print_state()
+
+    # Fill 3lit jug again
+    jug2 = jug2_capacity
+    print_state()
+
+    # Pour water from 3lit to 4lit jug
+    pour_amount = min(jug1, jug1_capacity - jug1)
+    jug1 += pour_amount
+    jug2 -= pour_amount
+    print_state()
+
+    # Empty 4lit jug
+    jug1 = 0
+    print_state()
+
+    # Pour water from 3lit to 4lit jug
+    pour_amount = min(jug2, jug1_capacity - jug1)
+    jug1 += pour_amount
+    jug2 -= pour_amount
+    print_state()
+
+    print("Solution reached.")
+
+if __name__ == '__main__':
+    water_jug_solution()
